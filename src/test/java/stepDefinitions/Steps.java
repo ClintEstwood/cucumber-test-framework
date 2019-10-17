@@ -8,7 +8,7 @@ public class Steps {
     @Given("I run Chrome browser")
     public void i_run_chrome_browser(){
         WebDriver driver = new ChromeDriver();
-        driver.get("www.Google.com");
+        driver.get("https://www.Google.com");
     }
 
 }
