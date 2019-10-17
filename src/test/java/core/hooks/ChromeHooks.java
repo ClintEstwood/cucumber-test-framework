@@ -12,8 +12,9 @@ public class ChromeHooks {
     @Before
     public void beforeScenario(){
         System.setProperty("webdriver.chrome.driver", "src/test/resources/webdrivers/chromedriver.exe");
+        System.setProperty("webdriver.chrome.silentOutput", "true");
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("webdriver.chrome.silentOutput", "true");
+        chromeOptions.addArguments("start-maximized");
         driver = new ChromeDriver(chromeOptions);
     }
 
