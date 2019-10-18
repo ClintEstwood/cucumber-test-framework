@@ -1,4 +1,4 @@
-package stepDefinitions;
+package core.stepDefinitions;
 
 import core.hooks.ChromeHooks;
 import io.cucumber.java.en.Given;
