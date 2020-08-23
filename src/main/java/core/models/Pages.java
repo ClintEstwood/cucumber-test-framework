@@ -1,4 +1,4 @@
-package pages;
+package core.models;
 
 import java.util.Arrays;
 
