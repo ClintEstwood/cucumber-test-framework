@@ -16,6 +16,16 @@
         <cucumber.version>6.5.1</cucumber.version>
         <maven.compiler.version>3.8.1</maven.compiler.version>
         <selenium.version>3.141.59</selenium.version>
+        <spring-boot.version>2.3.3.RELEASE</spring-boot.version>
+        <jackson-databind.version>2.11.2</jackson-databind.version>
+        <lombok.version>1.18.12</lombok.version>
+        <rest-assured.version>4.3.1</rest-assured.version>
+        <selenide.version>5.14.2</selenide.version>
+        <assertj.version>3.16.1</assertj.version>
+        <slf4j.version>1.7.30</slf4j.version>
+
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -38,6 +48,48 @@
             <artifactId>selenium-java</artifactId>
             <version>${selenium.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${rest-assured.version}</version>
+            <scope>main</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-path</artifactId>
+            <version>${rest-assured.version}</version>
+            <scope>main</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide</artifactId>
+            <version>${selenide.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>main</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>main</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
     </dependencies>
 
 
