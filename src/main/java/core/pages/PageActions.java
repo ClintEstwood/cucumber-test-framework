@@ -1,7 +1,7 @@
 package core.pages;
 
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.By;
 
 public interface PageActions {
-     WebElement getElementByName(String elementName);
+     By getSelectorByName(String elementName);
 }
