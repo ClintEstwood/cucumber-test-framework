@@ -14,6 +14,6 @@ public class CommonSteps {
 
     @Given("Verify that variables {string} and {string} are the same")
     public void iGetLatestForeignExchangeRatesViaRESTAPI(String variable1, String variable2) {
-        Assertions.assertThat(scenarioContext.getContext(variable1)).isEqualTo(scenarioContext.getContext(variable2));
+        Assertions.assertThat(scenarioContext.getContext(variable1)).isEqualToComparingOnlyGivenFields(scenarioContext.getContext(variable2));
     }
 }
