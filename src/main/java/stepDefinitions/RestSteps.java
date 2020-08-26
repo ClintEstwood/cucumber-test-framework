@@ -1,15 +1,19 @@
 package stepDefinitions;
 
-import core.models.Exchange;
+import core.ScenarioContext;
 import core.rest.GetRestData;
 import io.cucumber.java.en.Given;
 
 public class RestSteps {
 
-    Exchange exchangeRest;
+    private ScenarioContext scenarioContext;
 
-    @Given("I get latest foreign exchange rates via REST API")
-    public void iGetLatestForeignExchangeRatesViaRESTAPI() {
-        exchangeRest = GetRestData.getLatestForeignExchangeRates();
+    public RestSteps(ScenarioContext scenarioContext){
+        this.scenarioContext = scenarioContext;
+    }
+
+    @Given("I get latest foreign exchange rates via REST API and save it into variable {string}")
+    public void iGetLatestForeignExchangeRatesViaRESTAPI(String variableName) {
+        scenarioContext.setContext(variableName, GetRestData.getLatestForeignExchangeRates());
     }
 }
