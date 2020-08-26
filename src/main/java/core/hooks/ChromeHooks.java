@@ -16,11 +16,12 @@ public class ChromeHooks {
         java.util.logging.Logger.getLogger("org.openqa.selenium").setLevel(Level.OFF);
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("start-maximized");
-        driver = new ChromeDriver(chromeOptions);
+
+        WebDriverRunner.setWebDriver(new ChromeDriver(chromeOptions));
     }
 
     @After
     public void afterScenario(){
-        driver.close();
+        WebDriverRunner.driver().close();
     }
 }
