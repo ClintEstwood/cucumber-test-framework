@@ -1,14 +1,12 @@
 package globalElements;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.By;
 
 public class Sidebar {
 
-    @FindBy(css = "nav[id='ecb-sectionNav")
-    private static WebElement navigationBar;
+    private static final By navigationBar = By.cssSelector("nav[id='ecb-sectionNav]");
 
-    public static WebElement getNavigationBar(){
+    public static By getNavigationBar(){
         return navigationBar;
     }
 }
