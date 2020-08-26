@@ -14,8 +14,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import pages.EcbEuropaExchangePage;
 import pages.EuropeanCentralBankMainPage;
-import pages.StatisticsPage;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,11 +24,13 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class UiSteps {
+    private ScenarioContext scenarioContext;
+    private EcbEuropaExchangePage ecbEuropaExchangePage = new EcbEuropaExchangePage();
+    private EuropeanCentralBankMainPage europeanCentralBankMainPage = new EuropeanCentralBankMainPage();
 
-    Exchange exchangeUi;
-    EcbEuropaExchangePage ecbEuropaExchangePage = new EcbEuropaExchangePage();
-    EuropeanCentralBankMainPage europeanCentralBankMainPage = new EuropeanCentralBankMainPage();
-    StatisticsPage statisticsPage = new StatisticsPage();
+    public UiSteps(ScenarioContext scenarioContext){
+        this.scenarioContext = scenarioContext;
+    }
 
     @Given("I go to the {string} page")
     public void iGoToThePage(String url) {
@@ -36,12 +39,12 @@ public class UiSteps {
                 .waitUntil(Condition.appears, 2000).click();
     }
 
-    @Then("I get latest foreign exchange rates from the ECB page")
-    public void iGetLatestForeignExchangeRatesFromTheECBPage() {
-        exchangeUi = getLatestForeignExchangeRatesFromTheECBPage();
+    @Then("I get latest foreign exchange rates from the ECB page and save it into variable {string}")
+    public void iGetLatestForeignExchangeRatesFromTheECBPage(String variableName) {
+        scenarioContext.setContext(variableName, getLatestForeignExchangeRatesFromTheECBPage());
     }
 
-    private Exchange getLatestForeignExchangeRatesFromTheECBPage() {
+    private List<Rate> getListOfRatesFromTheECBPage(){
         List<Rate> rateList = new ArrayList<>();
         $(ecbEuropaExchangePage.getSelectorByName("EXCHANGE TABLE"))
                 .findAll(ecbEuropaExchangePage.getSelectorByName("EXCHANGE TABLE ROW")).forEach(row -> {
@@ -50,9 +53,14 @@ public class UiSteps {
                     .getSelectorByName("EXCHANGE TABLE RATE CELL")).getText());
             rateList.add(new Rate(currency, rateString));
         });
-        String exchangeDate = StringUtils.remove($(ecbEuropaExchangePage
+        return rateList;
+    }
+
+    private Exchange getLatestForeignExchangeRatesFromTheECBPage() {
+        List<Rate> rateList = getListOfRatesFromTheECBPage();
+        LocalDate exchangeDate = LocalDate.parse(StringUtils.remove($(ecbEuropaExchangePage
                 .getSelectorByName("EXCHANGE DATE"))
-                .getText(), "Euro foreign exchange reference rates: ");
+                .getText(), "Euro foreign exchange reference rates: "), DateTimeFormatter.ofPattern("dd MMMM yyyy"));
 
         return new Exchange("EUR", rateList, exchangeDate);
     }
@@ -60,11 +68,6 @@ public class UiSteps {
     @When("I click on {string} element/link/dropdown on European Central Bank Main page")
     public void iClickOnElementOnEuropeanCentralBankMainPage(String elementName) {
         $(europeanCentralBankMainPage.getSelectorByName(elementName)).click();
-    }
-
-    @And("I click on {string} element/link on Statistics page")
-    public void iClickOnElementOnStatisticsPage(String elementName) {
-        $(statisticsPage.getSelectorByName(elementName)).click();
     }
 
     @And("I click on link {string}")
