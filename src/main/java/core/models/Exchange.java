@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter
@@ -13,7 +14,7 @@ public class Exchange {
 
     private String base;
     private List<Rate> rates;
-    private String date;
+    private LocalDate date;
 
     @Override
     public String toString() {

@@ -7,6 +7,7 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.path.json.JsonPath;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -58,7 +59,7 @@ public class GetRestData {
 
         String jsonString = response.asString();
         String base = JsonPath.from(jsonString).get("base");
-        String date = JsonPath.from(jsonString).get("date");
+        LocalDate date = LocalDate.parse(JsonPath.from(jsonString).get("date"));
         HashMap<String, Float> rates = JsonPath.from(jsonString).get("rates");
         List<Rate> rateList = new ArrayList<>();
 
