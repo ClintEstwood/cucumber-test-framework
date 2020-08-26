@@ -23,6 +23,7 @@
         <selenide.version>5.14.2</selenide.version>
         <assertj.version>3.16.1</assertj.version>
         <slf4j.version>1.7.30</slf4j.version>
+        <stringUtils.version>3.11</stringUtils.version>
 
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -89,6 +90,13 @@
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${stringUtils.version}</version>
+        </dependency>
+
 
     </dependencies>
 
