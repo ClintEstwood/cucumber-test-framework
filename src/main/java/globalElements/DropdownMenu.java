@@ -1,14 +1,13 @@
 package globalElements;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.By;
 
 public class DropdownMenu {
 
-    @FindBy(css = "[class='ecb-linkListContainer']")
-    private static WebElement linkListContainer;
+    private static By linkList = By.cssSelector("[class='ecb-linkListContainer'] a");
 
-    public static WebElement getLinkListContainer(){
-        return linkListContainer;
+    public static By getLinkList(){
+        return linkList;
     }
+
 }
