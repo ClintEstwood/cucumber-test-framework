@@ -7,6 +7,7 @@ Feature: Latest date data
     Then Verify that exchange rates in variable "Exchange data from REST" has date "10-08-2020"
     Then Verify that exchange rates in variable "Exchange data from REST" has listed records:
       | GBP | 0.90155  |
+      | HKD | 9.1166   |
       | IDR | 17221.03 |
       | ILS | 4.0124   |
       | DKK | 7.4479   |
