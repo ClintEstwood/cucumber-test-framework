@@ -10,6 +10,9 @@ Add new **TestNG** runner in Intellij IDEA:
 
 ![Runner screenshot](https://github.com/ClintEstwood/cucumber-test-framework/blob/master/runner.jpeg)
 
+Add Lombok plugin
+![lombok plugin screenshot](https://github.com/ClintEstwood/cucumber-test-framework/blob/master/lombok.jpeg)
+
 # How to see reports
 
 1. Run test (or tests)
