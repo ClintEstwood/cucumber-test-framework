@@ -32,4 +32,10 @@ public class RestSteps {
     public void iGetLatestForeignExchangeRatesForExchangesAndBaseViaRESTAPIAndSaveItIntoVariable(String symbols, String base, String variableName) {
         scenarioContext.setContext(variableName, GetRestData.getLatestForeignExchangeRatesWithSymbolsAndBase(symbols, base));
     }
+
+    @Given("I get foreign exchange rates with specific date {string} via REST API and save it into variable {string}")
+    public void iGetForeignExchangeRatesWithSpecificDateViaRESTAPIAndSaveItIntoVariable(String date, String variableName) {
+        scenarioContext.setContext(variableName, GetRestData.getSpecificDateForeignExchangeRates(date));
+
+    }
 }
