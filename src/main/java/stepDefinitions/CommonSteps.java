@@ -56,6 +56,6 @@ public class CommonSteps {
         dataTable.asMap(String.class, Float.class).forEach(((symbol, rate) ->
                         expectedRates.add(new Rate((String) symbol, (Float) rate))));
         Collections.sort(expectedRates);
-        Assertions.assertThat(actualExchange.getRates()).containsAll(expectedRates);
+        Assertions.assertThat(actualExchange.getRates()).containsExactlyElementsOf(expectedRates);
     }
 }
