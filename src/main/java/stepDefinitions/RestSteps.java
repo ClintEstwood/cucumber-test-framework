@@ -18,7 +18,7 @@ public class RestSteps {
     }
 
     //exchanges example: "USD,GBP,PLN"
-    @Given("I get latest foreign exchange rates with symbols {string} via REST API and save it into variable {string}")
+    @Given("I get latest foreign exchange rates with symbol(s) {string} via REST API and save it into variable {string}")
     public void iGetLatestForeignRatesForExchangeSStringViaRESTAPIAndSaveItIntoVariableString(String exchanges, String variableName) {
         scenarioContext.setContext(variableName, GetRestData.getLatestForeignExchangeRatesWithSymbols(exchanges));
     }
@@ -28,7 +28,7 @@ public class RestSteps {
         scenarioContext.setContext(variableName, GetRestData.getLatestForeignExchangeRatesWithBase(base));
     }
 
-    @Given("I get latest foreign exchange rates with symbols {string} and base {string} via REST API and save it into variable {string}")
+    @Given("I get latest foreign exchange rates with symbol(s) {string} and base {string} via REST API and save it into variable {string}")
     public void iGetLatestForeignExchangeRatesForExchangesAndBaseViaRESTAPIAndSaveItIntoVariable(String symbols, String base, String variableName) {
         scenarioContext.setContext(variableName, GetRestData.getLatestForeignExchangeRatesWithSymbolsAndBase(symbols, base));
     }
@@ -39,7 +39,7 @@ public class RestSteps {
 
     }
 
-    @Given("I get foreign exchange rates with specific date {string} and symbols {string} via REST API and save it into variable {string}")
+    @Given("I get foreign exchange rates with specific date {string} and symbol(s) {string} via REST API and save it into variable {string}")
     public void iGetForeignExchangeRatesWithSpecificDateAndSymbolsViaRESTAPIAndSaveItIntoVariable(String date, String symbols, String variableName) {
         scenarioContext.setContext(variableName, GetRestData.getSpecificDateForeignExchangeRatesWithSymbols(date, symbols));
     }
@@ -47,5 +47,10 @@ public class RestSteps {
     @Given("I get foreign exchange rates with specific date {string} and base {string} via REST API and save it into variable {string}")
     public void iGetForeignExchangeRatesWithSpecificDateAndAseViaRESTAPIAndSaveItIntoVariable(String date, String base, String variableName) {
         scenarioContext.setContext(variableName, GetRestData.getSpecificDateForeignExchangeRatesWithBase(date, base));
+    }
+
+    @Given("I get foreign exchange rates with specific date {string}, base {string} and symbol(s) {string} via REST API and save it into variable {string}")
+    public void iGetForeignExchangeRatesWithSpecificDateBaseAndSymbolsViaRESTAPIAndSaveItIntoVariable(String date, String base, String symbols, String variableName) {
+        scenarioContext.setContext(variableName, GetRestData.getSpecificDateForeignExchangeRatesWithSymbolsAndBase(date, symbols, base));
     }
 }
