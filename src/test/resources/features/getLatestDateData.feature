@@ -17,3 +17,7 @@ Feature: Latest date data
     And I get latest foreign rates for exchanges "USD,GBP,PLN" from the ECB page and save it into variable "Exchange data from UI"
     Then Verify that variables "Exchange data from REST" and "Exchange data from UI" are the same
 
+  @Feature=1.3
+  Scenario: As a user As a user I want to verify latest foreign exchang rates with base
+    Given I get latest foreign exchange rates with base "USD" via REST API and save it into variable "Exchange data from REST"
+    Then Verify that exchange rates in variable "Exchange data from REST" has base "USD"
