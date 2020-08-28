@@ -4,7 +4,6 @@ import core.ScenarioContext;
 import core.models.Exchange;
 import core.models.Rate;
 import io.cucumber.datatable.DataTable;
-import io.cucumber.datatable.internal.difflib.Delta;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.apache.commons.lang3.StringUtils;
@@ -13,6 +12,7 @@ import org.assertj.core.api.Assertions;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CommonSteps {
@@ -51,10 +51,11 @@ public class CommonSteps {
 
     @Then("Verify that exchange rates in variable {string} has listed records:")
     public void verifyThatExchangeRatesInVariableHasListedRecords(String variableName, DataTable dataTable) {
-        Exchange exchange = (Exchange) scenarioContext.getContext(variableName);
+        Exchange actualExchange = (Exchange) scenarioContext.getContext(variableName);
+        List<Rate> expectedRates = new ArrayList<>();
         dataTable.asMap(String.class, Float.class).forEach(((symbol, rate) ->
-                Assertions.assertThat(exchange.getRates())
-                        .contains(new Rate((String) symbol, (Float) rate))
-        ));
+                        expectedRates.add(new Rate((String) symbol, (Float) rate))));
+        Collections.sort(expectedRates);
+        Assertions.assertThat(actualExchange.getRates()).containsAll(expectedRates);
     }
 }
