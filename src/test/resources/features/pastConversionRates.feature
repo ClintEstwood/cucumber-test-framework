@@ -86,3 +86,11 @@ Feature: Latest date data
       | KRW | 1187.0101164669  |
       | HUF | 293.4540508374   |
       | AUD | 1.398027714      |
+
+  @Feature=2.4
+  Scenario: As a user I want to verify specific date foreign exchange rates with symbols and base
+    Given I get foreign exchange rates with specific date "2020-08-10", base "USD" and symbols "GBP" via REST API and save it into variable "Exchange data from REST"
+    Then Verify that exchange rates in variable "Exchange data from REST" has base "USD"
+    Then Verify that exchange rates in variable "Exchange data from REST" has date "10-08-2020"
+    Then Verify that exchange rates in variable "Exchange data from REST" has listed records:
+      | GBP | 0.7664286322 |
