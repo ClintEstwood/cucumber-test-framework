@@ -21,7 +21,6 @@
         <rest-assured.version>4.3.1</rest-assured.version>
         <selenide.version>5.14.2</selenide.version>
         <assertj.version>3.16.1</assertj.version>
-        <slf4j.version>1.7.30</slf4j.version>
         <stringUtils.version>3.11</stringUtils.version>
 
         <maven.compiler.source>${java.version}</maven.compiler.source>
@@ -82,12 +81,6 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
         </dependency>
 
         <dependency>
