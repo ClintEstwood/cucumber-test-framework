@@ -9,3 +9,11 @@ Feature: Latest date data
     And I click on link "Euro foreign exchange reference rates"
     And I get latest foreign exchange rates from the ECB page and save it into variable "Exchange data from UI"
     Then Verify that variables "Exchange data from REST" and "Exchange data from UI" are the same
+
+  @Feature=1.2
+  Scenario: As a user I want to verify latest foreign exchange rates with symbols
+    Given I get latest foreign rates for exchanges "USD,GBP,PLN" via REST API and save it into variable "Exchange data from REST"
+    When I go to the Euro foreign exchange reference rates page
+    And I get latest foreign rates for exchanges "USD,GBP,PLN" from the ECB page and save it into variable "Exchange data from UI"
+    Then Verify that variables "Exchange data from REST" and "Exchange data from UI" are the same
+
