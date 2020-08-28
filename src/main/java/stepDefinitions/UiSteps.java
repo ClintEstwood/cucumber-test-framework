@@ -18,17 +18,20 @@ import pages.EuropeanCentralBankMainPage;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class UiSteps {
+    private static final String EURO_REFERENCE_EXCHANGE_RATES_URL = "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html";
     private ScenarioContext scenarioContext;
     private EcbEuropaExchangePage ecbEuropaExchangePage = new EcbEuropaExchangePage();
     private EuropeanCentralBankMainPage europeanCentralBankMainPage = new EuropeanCentralBankMainPage();
 
-    public UiSteps(ScenarioContext scenarioContext){
+    public UiSteps(ScenarioContext scenarioContext) {
         this.scenarioContext = scenarioContext;
     }
 
@@ -44,7 +47,7 @@ public class UiSteps {
         scenarioContext.setContext(variableName, getLatestForeignExchangeRatesFromTheECBPage());
     }
 
-    private List<Rate> getListOfRatesFromTheECBPage(){
+    private List<Rate> getListOfRatesFromTheECBPage() {
         List<Rate> rateList = new ArrayList<>();
         $(ecbEuropaExchangePage.getSelectorByName("EXCHANGE TABLE"))
                 .findAll(ecbEuropaExchangePage.getSelectorByName("EXCHANGE TABLE ROW")).forEach(row -> {
@@ -78,5 +81,20 @@ public class UiSteps {
     @And("I click on {string} link on dropdown menu")
     public void iClickOnLinkOnDropdownMenu(String linkLabel) {
         $$(DropdownMenu.getLinkList()).findBy(Condition.text(linkLabel)).click();
+    }
+
+    @When("I go to the Euro foreign exchange reference rates page")
+    public void iGoToTheEuroForeignExchangeReferenceRatesPage() {
+        iGoToThePage(EURO_REFERENCE_EXCHANGE_RATES_URL);
+    }
+
+    @And("I get latest foreign rates for exchanges {string} from the ECB page and save it into variable {string}")
+    public void iGetLatestForeignRatesForExchangesFromTheECBPageAndSaveItIntoVariable(String exchanges, String variableName) {
+        Exchange exchangeUi = getLatestForeignExchangeRatesFromTheECBPage();
+        List<Rate> filteredRates = exchangeUi.getRates().stream()
+                .filter(r -> Arrays.asList(StringUtils.split(exchanges, ",")).contains(r.getExchange()))
+                .collect(Collectors.toList());
+
+        scenarioContext.setContext(variableName, new Exchange(exchangeUi.getBase(), filteredRates, exchangeUi.getDate()));
     }
 }
