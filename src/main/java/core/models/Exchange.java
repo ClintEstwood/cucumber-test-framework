@@ -24,7 +24,6 @@ public class Exchange {
         return String.format("Exchange { base = '%s', rates = {" + rates + "}, date = '%s' }", base, date);
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
