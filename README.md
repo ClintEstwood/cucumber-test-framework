@@ -5,7 +5,7 @@ Add new **TestNG** runner in Intellij IDEA:
 * class: core.runners.RunCucumberTest
 * VM options: -ea -Dtestng.dtd.http=true
 * Working directory: $MODULE_WORKING_DIR$
-* JRE: Default (14)
+* JRE: Default (15)
 * Shorten command line: user-local default: none
 
 ![Runner screenshot](https://github.com/ClintEstwood/cucumber-test-framework/blob/master/runner.jpeg)
