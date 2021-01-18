@@ -1,4 +1,4 @@
-package pages;
+package pages.ecb;
 
 import core.pages.PageActions;
 import org.openqa.selenium.By;

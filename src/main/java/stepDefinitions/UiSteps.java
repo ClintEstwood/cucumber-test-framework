@@ -12,8 +12,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
-import pages.EcbEuropaExchangePage;
-import pages.EuropeanCentralBankMainPage;
+import pages.ecb.EcbEuropaExchangePage;
+import pages.ecb.EuropeanCentralBankMainPage;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
