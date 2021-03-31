@@ -1,7 +1,8 @@
 package core.runners;
 
-import io.cucumber.testng.AbstractTestNGCucumberTests;
-import io.cucumber.testng.CucumberOptions;
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
+import org.junit.runner.RunWith;
 
 @CucumberOptions(
         plugin = {
@@ -15,5 +16,6 @@ import io.cucumber.testng.CucumberOptions;
                 "core.hooks"
         }
 )
-public class RunCucumberTest extends AbstractTestNGCucumberTests {
+@RunWith(Cucumber.class)
+public class RunCucumberTest {
 }
