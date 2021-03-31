@@ -23,6 +23,7 @@
         <assertj.version>3.16.1</assertj.version>
         <stringUtils.version>3.11</stringUtils.version>
         <slf4j.version>1.7.30</slf4j.version>
+        <junit.version>5.4.0</junit.version>
 
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -37,7 +38,7 @@
 
         <dependency>
             <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-testng</artifactId>
+            <artifactId>cucumber-junit</artifactId>
             <version>${cucumber.version}</version>
         </dependency>
 
@@ -102,6 +103,12 @@
             <version>${slf4j.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.version}</version>
+        </dependency>
+
     </dependencies>
 
 
@@ -130,7 +137,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <projectName>HSBC test project</projectName>
+                            <projectName>Cucumber test framework development</projectName>
                             <outputDirectory>target/cucumber-reports/advanced-reports</outputDirectory>
                             <cucumberOutput>target/cucumber-reports/CucumberTestReport.json</cucumberOutput>
                             <buildNumber>1</buildNumber>
