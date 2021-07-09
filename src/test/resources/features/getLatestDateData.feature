@@ -28,3 +28,6 @@ Feature: Latest date data
     Then Verify that exchange rates in variable "Exchange data from REST" has base "USD"
     Then Verify that exchange rates in variable "Exchange data from REST" has symbols "USD,GBP,PLN"
 
+  @Feature=1.5
+  Scenario: Как пользователь, я могу тестировать
+
